@@ -1,0 +1,120 @@
+<div class="card">
+  <div class="card-body">
+      <h5 class="card-title">{{title}}</h5>
+      <div class="card-text">
+          <div class="container">
+              <div class="row">
+                  <div class="col-2">
+                    <div class="btn-group-toggle">
+                      <label [class.btn-secondary]="buttons.l" [class.btn-light]="!buttons.l" ngbButtonLabel>
+                        <input type="checkbox" ngbButton [(ngModel)]="buttons.l" (ngModelChange)="maskChange.emit(buttonsToMask())">L
+                      </label>
+                    </div>
+                  </div>
+                  <div class="col-8"></div>
+                  <div class="col-2">
+                      <div class="btn-group-toggle">
+                          <label [class.btn-secondary]="buttons.r" [class.btn-light]="!buttons.r" ngbButtonLabel>
+                            <input type="checkbox" ngbButton [(ngModel)]="buttons.r" (ngModelChange)="maskChange.emit(buttonsToMask())">R
+                          </label>
+                      </div>
+                  </div>
+              </div>
+              <div class="row">
+                <div class="col-11">&nbsp;</div>
+              </div>
+              <div class="row">
+                  <div class="col-2"></div>
+                  <div class="col-2">
+                      <div class="btn-group-toggle">
+                          <label [class.btn-secondary]="buttons.d_up" [class.btn-light]="!buttons.d_up" ngbButtonLabel>
+                            <input type="checkbox" ngbButton [(ngModel)]="buttons.d_up" (ngModelChange)="maskChange.emit(buttonsToMask())">&#x2b9d;
+                          </label>
+                      </div>
+                  </div>
+                  <div class="col-4"></div>
+                  <div class="col-2">
+                      <div class="btn-group-toggle">
+                          <label [class.btn-primary]="buttons.x" [class.btn-light]="!buttons.x" ngbButtonLabel>
+                            <input type="checkbox" ngbButton [(ngModel)]="buttons.x" (ngModelChange)="maskChange.emit(buttonsToMask())">X
+                          </label>
+                      </div>
+                  </div>
+                  <div class="col-2"></div>
+              </div>
+              <div class="row">
+                <div class="col-1"></div>
+                <div class="col-2">
+                    <div class="btn-group-toggle">
+                        <label [class.btn-secondary]="buttons.d_left" [class.btn-light]="!buttons.d_left" ngbButtonLabel>
+                          <input type="checkbox" ngbButton [(ngModel)]="buttons.d_left" (ngModelChange)="maskChange.emit(buttonsToMask())">&#x2b9c;
+                        </label>
+                    </div>
+                </div>
+                <div class="col-2">
+                    <div class="btn-group-toggle">
+                        <label [class.btn-secondary]="buttons.d_right" [class.btn-light]="!buttons.d_right" ngbButtonLabel>
+                          <input type="checkbox" ngbButton [(ngModel)]="buttons.d_right" (ngModelChange)="maskChange.emit(buttonsToMask())">&#x2b9e;
+                        </label>
+                    </div>
+                </div>
+                <div class="col-2"></div>
+                <div class="col-2">
+                    <div class="btn-group-toggle">
+                        <label [class.btn-success]="buttons.y" [class.btn-light]="!buttons.y" ngbButtonLabel>
+                          <input type="checkbox" ngbButton [(ngModel)]="buttons.y" (ngModelChange)="maskChange.emit(buttonsToMask())">Y
+                        </label>
+                    </div>
+                </div>
+                <div class="col-2">
+                    <div class="btn-group-toggle">
+                        <label [class.btn-danger]="buttons.a" [class.btn-light]="!buttons.a" ngbButtonLabel>
+                          <input type="checkbox" ngbButton [(ngModel)]="buttons.a" (ngModelChange)="maskChange.emit(buttonsToMask())">A
+                        </label>
+                    </div>
+                </div>
+              </div>
+              <div class="row">
+                  <div class="col-2"></div>
+                  <div class="col-2">
+                      <div class="btn-group-toggle">
+                          <label [class.btn-secondary]="buttons.d_down" [class.btn-light]="!buttons.d_down" ngbButtonLabel>
+                            <input type="checkbox" ngbButton [(ngModel)]="buttons.d_down" (ngModelChange)="maskChange.emit(buttonsToMask())">&#x2b9f;
+                          </label>
+                      </div>
+                  </div>
+                  <div class="col-4"></div>
+                  <div class="col-2">
+                      <div class="btn-group-toggle">
+                          <label [class.btn-warning]="buttons.b" [class.btn-light]="!buttons.b" ngbButtonLabel>
+                            <input type="checkbox" ngbButton [(ngModel)]="buttons.b" (ngModelChange)="maskChange.emit(buttonsToMask())">B
+                          </label>
+                      </div>
+                  </div>
+                  <div class="col-2"></div>
+              </div>
+              <div class="row">
+                  <div class="col-11">&nbsp;</div>
+              </div>
+              <div class="row">
+                <div class="col-7"></div>
+                <div class="col-2">
+                  <div class="btn-group-toggle">
+                      <label [class.btn-secondary]="buttons.start" [class.btn-light]="!buttons.start" ngbButtonLabel>
+                        <input type="checkbox" ngbButton [(ngModel)]="buttons.start" (ngModelChange)="maskChange.emit(buttonsToMask())">Start
+                      </label>
+                  </div>
+                </div>
+                <div class="col-2">
+                    <div class="btn-group-toggle">
+                        <label [class.btn-secondary]="buttons.select" [class.btn-light]="!buttons.select" ngbButtonLabel>
+                          <input type="checkbox" ngbButton [(ngModel)]="buttons.select" (ngModelChange)="maskChange.emit(buttonsToMask())">Select
+                        </label>
+                    </div>
+                </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+0x{{buttonsToMask().toString(16)}}

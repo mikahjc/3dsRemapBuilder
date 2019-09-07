@@ -7,20 +7,21 @@ import { AppRoutingModule } from './app-routing.module';
 import { BlankModule } from './app-shell/blank/blank.module';
 import { NavBarComponent } from './app-shell/nav-bar/nav-bar.component';
 import { FooterComponent } from './app-shell/footer/footer.component';
+import { NgbButtonLabel } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavBarComponent,
     FooterComponent
-  ],
+,  ],
   imports: [
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
     BlankModule,
   ],
-  providers: [],
+  providers: [NgbButtonLabel],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
