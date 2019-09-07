@@ -7,6 +7,7 @@
 })
 export class BlankComponent implements OnInit {
 
+  testValue = 0xc03;
   constructor() { }
 
   ngOnInit() {
