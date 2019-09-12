@@ -1,16 +1,21 @@
-<div class="container">
-  <div class="row">
-    <input type="text" [(ngModel)]="testValue">
-  </div>
+<div class="container-fluid">
     <div class="row">
-        <ul class="list-group col-2">
-            <li class="list-group-item">No mappings defined</li>
-        </ul>
-        <div class="col-5">
-            <app-button-selector [(mask)]="testValue" [title]="'When I press...'"></app-button-selector>
+        <div class="col-3">
+            <button type="button" class="btn btn-primary" (click)="saveCurrent()">Save this swap</button>
+            <ul class="list-group">
+                <li *ngIf="mappings.length === 0" class="list-group-item">No mappings defined</li>
+                <li *ngFor="let mapping of mappings" class="list-group-item">
+                    {{mapping.toString()}}<br>
+                    <button type="button" class="btn btn-secondary" (click)="loadMapping(mapping)">{{mapping === currentMapping ? 'Done' : 'Edit'}}</button>
+                    <button type="button" class="btn btn-danger" (click)="deleteMapping(mapping)">Delete</button>
+                </li>
+            </ul>
         </div>
-        <div class="col-5 panel panel-default">
-            <app-button-selector [title]="'I want to swap to...'"></app-button-selector>
+        <div class="col">
+            <app-button-selector [(mask)]="currentMapping.input" [title]="'When I press...'"></app-button-selector>
+        </div>
+        <div class="col panel panel-default">
+            <app-button-selector [(mask)]="currentMapping.output" [title]="'I want to swap to...'"></app-button-selector>
         </div>
     </div>
 </div>

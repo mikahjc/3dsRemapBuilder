@@ -7,13 +7,15 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ButtonSelectorComponent } from '../button-selector/button-selector.component';
 import { ButtonMapConfigurationComponent } from '../button-map-configuration/button-map-configuration.component'
 import { FormsModule } from '@angular/forms';
+import {TouchscreenConfigurationComponent} from '../touch-screen-configuration/touchscreen-configuration.component';
 
 
 @NgModule({
   declarations: [
     BlankComponent,
     ButtonSelectorComponent,
-    ButtonMapConfigurationComponent
+    ButtonMapConfigurationComponent,
+    TouchscreenConfigurationComponent
   ],
   imports: [
     CommonModule,
