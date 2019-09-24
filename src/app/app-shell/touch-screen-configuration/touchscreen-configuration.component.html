@@ -43,7 +43,8 @@
                             </td>
                         </tr>
                     </table>
-                    <input type="file" (change)="onTouchscreenFileSelect($event)">
+                    <label for="screenshot" class="btn btn-primary">Select screenshot...</label>
+                    <input type="file" accept="image/*" (change)="onTouchscreenFileSelect($event)" id="screenshot" hidden>
                 </div>
             </div>
         </div>

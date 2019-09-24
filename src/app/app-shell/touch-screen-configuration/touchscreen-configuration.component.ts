@@ -12,7 +12,6 @@ export class TouchscreenConfigurationComponent implements OnInit {
 
   mappings: Mapping<Buttons, Coordinates>[];
   currentMapping: Mapping<Buttons, Coordinates>;
-  mouseDown = false;
   background: string;
   constructor() {
     this.currentMapping = new Mapping(new Buttons(), new Coordinates());
@@ -25,7 +24,6 @@ export class TouchscreenConfigurationComponent implements OnInit {
   touchscreenDragging(event: MouseEvent, crosshair: boolean, axis: string = '') {
     event.stopPropagation();
     if (event.buttons === 1) {
-      console.log('X:', event.offsetX, 'Y:', event.offsetY);
       if ((crosshair && axis.toLowerCase() === 'y') || !crosshair) {
         this.currentMapping.output.x = event.offsetX;
       }
