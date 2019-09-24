@@ -12,6 +12,7 @@ export class TouchscreenConfigurationComponent implements OnInit {
 
   mappings: Mapping<Buttons, Coordinates>[];
   currentMapping: Mapping<Buttons, Coordinates>;
+  mouseDown = false;
   background: string;
   constructor() {
     this.currentMapping = new Mapping(new Buttons(), new Coordinates());
@@ -19,6 +20,38 @@ export class TouchscreenConfigurationComponent implements OnInit {
   }
 
   ngOnInit() {
+  }
+
+  touchscreenDragging(event: MouseEvent, crosshair: boolean, axis: string = '') {
+    event.stopPropagation();
+    if (event.buttons === 1) {
+      console.log('X:', event.offsetX, 'Y:', event.offsetY);
+      if ((crosshair && axis.toLowerCase() === 'y') || !crosshair) {
+        this.currentMapping.output.x = event.offsetX;
+      }
+      if ((crosshair && axis.toLowerCase() === 'x') || !crosshair) {
+        this.currentMapping.output.y = 240 - event.offsetY;
+      }
+    }
+  }
+
+  touchscreenClick(event: MouseEvent) {
+    this.currentMapping.output.x = event.offsetX;
+    this.currentMapping.output.y = 240 - event.offsetY;
+  }
+
+  touchscreenCrosshairClick(event: MouseEvent, axis: string) {
+    event.stopPropagation();
+    switch (axis.toLowerCase()) {
+      case 'x':
+        this.currentMapping.output.y = 240 - event.offsetY;
+        break;
+      case 'y':
+        this.currentMapping.output.x = event.offsetX;
+        break;
+      default:
+        throw new Error('invalid axis');
+    }
   }
 
   onTouchscreenFileSelect(event) {
