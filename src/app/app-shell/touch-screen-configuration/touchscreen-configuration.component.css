@@ -39,3 +39,9 @@ input[type=range]
 .crosshair-bottom {
     border-right: red solid 2px;
 }
+
+.list-group {
+    max-height: 20em;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+}

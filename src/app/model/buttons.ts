@@ -56,5 +56,20 @@ export class Buttons {
             (this.x ? 0x400 : 0) +
             (this.y ? 0x800 : 0);
     }
+
+    anyPressed(): boolean {
+        return this.a
+            || this.b
+            || this.x
+            || this.y
+            || this.l
+            || this.r
+            || this.start
+            || this.select
+            || this.dDown
+            || this.dLeft
+            || this.dRight
+            || this.dUp;
+    }
 }
 

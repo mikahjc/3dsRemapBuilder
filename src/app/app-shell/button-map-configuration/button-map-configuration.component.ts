@@ -11,6 +11,7 @@ export class ButtonMapConfigurationComponent implements OnInit {
 
   mappings: Mapping<Buttons, Buttons>[];
   currentMapping: Mapping<Buttons, Buttons>;
+  editing = false;
   constructor() {
     this.currentMapping = new Mapping(new Buttons(), new Buttons());
     this.mappings = [];
@@ -26,8 +27,10 @@ export class ButtonMapConfigurationComponent implements OnInit {
 
   loadMapping(mapping: Mapping<Buttons, Buttons>) {
     if (mapping === this.currentMapping) {
+      this.editing = false;
       this.currentMapping = new Mapping(new Buttons(), new Buttons());
     } else {
+      this.editing = true;
       this.currentMapping = mapping;
     }
   }

@@ -1,7 +1,7 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-3">
-            <button type="button" class="btn btn-primary" (click)="saveCurrent()">Save this swap</button>
+            <button type="button" class="btn btn-primary" (click)="saveCurrent()" [disabled]="!currentMapping.input.anyPressed()">Save this swap</button>
             <ul class="list-group">
                 <li *ngIf="mappings.length === 0" class="list-group-item">No mappings defined</li>
                 <li *ngFor="let mapping of mappings" class="list-group-item">
