@@ -8,6 +8,7 @@ import { ButtonSelectorComponent } from '../button-selector/button-selector.comp
 import { ButtonMapConfigurationComponent } from '../button-map-configuration/button-map-configuration.component'
 import { FormsModule } from '@angular/forms';
 import {TouchscreenConfigurationComponent} from '../touch-screen-configuration/touchscreen-configuration.component';
+import {CirclePadConfigurationComponent} from '../circle-pad-configuration/circle-pad-configuration.component';
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import {TouchscreenConfigurationComponent} from '../touch-screen-configuration/t
     BuilderConfigComponent,
     ButtonSelectorComponent,
     ButtonMapConfigurationComponent,
-    TouchscreenConfigurationComponent
+    TouchscreenConfigurationComponent,
+    CirclePadConfigurationComponent
   ],
   imports: [
     CommonModule,
