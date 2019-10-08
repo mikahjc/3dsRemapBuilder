@@ -1,21 +1,21 @@
 ﻿import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { BlankComponent } from './blank.component';
+import { BuilderConfigComponent } from './builder-config.component';
 
 describe('BlankComponent', () => {
-  let component: BlankComponent;
-  let fixture: ComponentFixture<BlankComponent>;
+  let component: BuilderConfigComponent;
+  let fixture: ComponentFixture<BuilderConfigComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [
-        BlankComponent
+        BuilderConfigComponent
       ]
     }).compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(BlankComponent);
+    fixture = TestBed.createComponent(BuilderConfigComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

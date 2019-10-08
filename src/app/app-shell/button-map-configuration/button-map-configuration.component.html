@@ -1,21 +1,18 @@
-<div class="container-fluid">
-    <div class="row">
-        <div class="col-3">
-            <button type="button" class="btn btn-primary" (click)="saveCurrent()" [disabled]="!currentMapping.input.anyPressed() || editing">Save this swap</button>
-            <ul class="list-group">
-                <li *ngIf="mappings.length === 0" class="list-group-item">No mappings defined</li>
-                <li *ngFor="let mapping of mappings" class="list-group-item">
-                    {{mapping.toString()}}<br>
-                    <button type="button" class="btn btn-secondary" (click)="loadMapping(mapping)">{{mapping === currentMapping ? 'Done' : 'Edit'}}</button>
-                    <button type="button" class="btn btn-danger" (click)="deleteMapping(mapping)">Delete</button>
-                </li>
-            </ul>
-        </div>
-        <div class="col">
-            <app-button-selector [(mask)]="currentMapping.input" [title]="'When I press...'"></app-button-selector>
-        </div>
-        <div class="col panel panel-default">
-            <app-button-selector [(mask)]="currentMapping.output" [title]="'I want to swap to...'"></app-button-selector>
-        </div>
+<div class="d-flex flex-wrap">
+    <div class="flex-fill third">
+        <button type="button" class="btn btn-primary" (click)="saveCurrent()"
+                [disabled]="!currentMapping.input.anyPressed() || editing">Save this swap
+        </button>
+        <ul class="list-group">
+            <li *ngIf="mappings.length === 0" class="list-group-item">No mappings defined</li>
+            <li *ngFor="let mapping of mappings" class="list-group-item">
+                {{mapping.toString()}}<br>
+                <button type="button" class="btn btn-secondary"
+                        (click)="loadMapping(mapping)">{{mapping === currentMapping ? 'Done' : 'Edit'}}</button>
+                <button type="button" class="btn btn-danger" (click)="deleteMapping(mapping)">Delete</button>
+            </li>
+        </ul>
     </div>
+    <app-button-selector class="flex-fill third" [(mask)]="currentMapping.input" [title]="'When I press...'"></app-button-selector>
+    <app-button-selector class="flex-fill third" [(mask)]="currentMapping.output" [title]="'I want to swap to...'"></app-button-selector>
 </div>

@@ -2,10 +2,10 @@
 import { Routes, RouterModule } from '@angular/router';
 
 const routes: Routes = [
-  { path: '',   redirectTo: '/blank', pathMatch: 'full' },
+  { path: '',   redirectTo: '/config', pathMatch: 'full' },
   {
-    path: 'blank',
-    loadChildren: () => import('./app-shell/blank/blank.module').then(mod => mod.BlankModule)
+    path: 'config',
+    loadChildren: () => import('./app-shell/builder-config/builder-config.module').then(mod => mod.BuilderConfigModule)
   },
 ];
 

@@ -1,6 +1,5 @@
-<div class="container-fluid">
-    <div class="row">
-        <div class="col-3">
+<div class="d-flex flex-row">
+        <div class="flex-fill third">
             <button type="button" class="btn btn-primary" (click)="saveCurrent()" [disabled]="!currentMapping.input.anyPressed()">Save this swap</button>
             <ul class="list-group">
                 <li *ngIf="mappings.length === 0" class="list-group-item">No mappings defined</li>
@@ -11,10 +10,8 @@
                 </li>
             </ul>
         </div>
-        <div class="col">
-            <app-button-selector [(mask)]="currentMapping.input" [title]="'When I press...'"></app-button-selector>
-        </div>
-        <div class="col panel panel-default">
+            <app-button-selector class="flex-fill third" [(mask)]="currentMapping.input" [title]="'When I press...'"></app-button-selector>
+        <div class="flex-fill third">
             <div class="card">
                 <div class="card-body">
                     <h5 class="card-title">I want the touchscreen to touch...</h5>
@@ -48,5 +45,4 @@
                 </div>
             </div>
         </div>
-    </div>
 </div>

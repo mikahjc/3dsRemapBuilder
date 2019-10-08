@@ -4,7 +4,7 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
-import { BlankModule } from './app-shell/blank/blank.module';
+import { BuilderConfigModule } from './app-shell/builder-config/builder-config.module';
 import { NavBarComponent } from './app-shell/nav-bar/nav-bar.component';
 import { FooterComponent } from './app-shell/footer/footer.component';
 import { NgbButtonLabel } from '@ng-bootstrap/ng-bootstrap';
@@ -19,7 +19,7 @@ import { NgbButtonLabel } from '@ng-bootstrap/ng-bootstrap';
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
-    BlankModule,
+    BuilderConfigModule,
   ],
   providers: [NgbButtonLabel],
   bootstrap: [AppComponent]

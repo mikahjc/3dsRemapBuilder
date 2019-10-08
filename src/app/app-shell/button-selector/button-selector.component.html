@@ -11,8 +11,7 @@
                       </label>
                     </div>
                   </div>
-                  <div class="col-8"></div>
-                  <div class="col-2">
+                  <div class="col-2 offset-8">
                       <div class="btn-group-toggle">
                           <label [class.btn-secondary]="buttons.r" [class.btn-light]="!buttons.r" ngbButtonLabel>
                             <input type="checkbox" ngbButton [(ngModel)]="buttons.r" (ngModelChange)="maskChange.emit(buttons)">R
@@ -24,27 +23,23 @@
                 <div class="col-11">&nbsp;</div>
               </div>
               <div class="row">
-                  <div class="col-2"></div>
-                  <div class="col-2">
+                  <div class="col-2 offset-2">
                       <div class="btn-group-toggle">
                           <label [class.btn-secondary]="buttons.dUp" [class.btn-light]="!buttons.dUp" ngbButtonLabel>
                             <input type="checkbox" ngbButton [(ngModel)]="buttons.dUp" (ngModelChange)="maskChange.emit(buttons)">&#x2b9d;
                           </label>
                       </div>
                   </div>
-                  <div class="col-4"></div>
-                  <div class="col-2">
+                  <div class="col-2 offset-4">
                       <div class="btn-group-toggle">
                           <label [class.btn-primary]="buttons.x" [class.btn-light]="!buttons.x" ngbButtonLabel>
                             <input type="checkbox" ngbButton [(ngModel)]="buttons.x" (ngModelChange)="maskChange.emit(buttons)">X
                           </label>
                       </div>
                   </div>
-                  <div class="col-2"></div>
               </div>
               <div class="row">
-                <div class="col-1"></div>
-                <div class="col-2">
+                <div class="col-2 offset-1">
                     <div class="btn-group-toggle">
                         <label [class.btn-secondary]="buttons.dLeft" [class.btn-light]="!buttons.dLeft" ngbButtonLabel>
                           <input type="checkbox" ngbButton [(ngModel)]="buttons.dLeft" (ngModelChange)="maskChange.emit(buttons)">&#x2b9c;
@@ -58,8 +53,7 @@
                         </label>
                     </div>
                 </div>
-                <div class="col-2"></div>
-                <div class="col-2">
+                <div class="col-2 offset-2">
                     <div class="btn-group-toggle">
                         <label [class.btn-success]="buttons.y" [class.btn-light]="!buttons.y" ngbButtonLabel>
                           <input type="checkbox" ngbButton [(ngModel)]="buttons.y" (ngModelChange)="maskChange.emit(buttons)">Y
@@ -75,30 +69,26 @@
                 </div>
               </div>
               <div class="row">
-                  <div class="col-2"></div>
-                  <div class="col-2">
+                  <div class="col-2 offset-2">
                       <div class="btn-group-toggle">
                           <label [class.btn-secondary]="buttons.dDown" [class.btn-light]="!buttons.dDown" ngbButtonLabel>
                             <input type="checkbox" ngbButton [(ngModel)]="buttons.dDown" (ngModelChange)="maskChange.emit(buttons)">&#x2b9f;
                           </label>
                       </div>
                   </div>
-                  <div class="col-4"></div>
-                  <div class="col-2">
+                  <div class="col-2 offset-4">
                       <div class="btn-group-toggle">
                           <label [class.btn-warning]="buttons.b" [class.btn-light]="!buttons.b" ngbButtonLabel>
                             <input type="checkbox" ngbButton [(ngModel)]="buttons.b" (ngModelChange)="maskChange.emit(buttons)">B
                           </label>
                       </div>
                   </div>
-                  <div class="col-2"></div>
               </div>
               <div class="row">
                   <div class="col-11">&nbsp;</div>
               </div>
               <div class="row">
-                <div class="col-7"></div>
-                <div class="col-2">
+                <div class="col-2 offset-7">
                   <div class="btn-group-toggle">
                       <label [class.btn-secondary]="buttons.start" [class.btn-light]="!buttons.start" ngbButtonLabel>
                         <input type="checkbox" ngbButton [(ngModel)]="buttons.start" (ngModelChange)="maskChange.emit(buttons)">Start

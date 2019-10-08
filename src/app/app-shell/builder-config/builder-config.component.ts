@@ -2,10 +2,10 @@
 
 @Component({
   selector: 'app-blank',
-  templateUrl: './blank.component.html',
-  styleUrls: ['./blank.component.css']
+  templateUrl: './builder-config.component.html',
+  styleUrls: ['./builder-config.component.css']
 })
-export class BlankComponent implements OnInit {
+export class BuilderConfigComponent implements OnInit {
 
   testValue = 0xc03;
   constructor() { }
