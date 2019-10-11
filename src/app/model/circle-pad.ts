@@ -1,4 +1,5 @@
 export class CirclePad {
+    static readonly MAX_RAW_VAL = 4096;
     diameter: number;
     x: number;
     y: number;
@@ -10,6 +11,10 @@ export class CirclePad {
     }
 
     toString(): string {
-        return `X: ${this.x / this.diameter} %%, Y: ${this.y / this.diameter} %%`;
+        return `X: ${(this.x / this.diameter) * 100}%, Y: ${(this.y / this.diameter) * 100}%`;
+    }
+
+    toData(): number {
+        return (((this.y / this.diameter) * CirclePad.MAX_RAW_VAL) << 12) + ((this.x / this.diameter) * CirclePad.MAX_RAW_VAL);
     }
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {Mapping} from '../../model/mapping';
 import {Buttons} from '../../model/buttons';
 
@@ -9,12 +9,12 @@ import {Buttons} from '../../model/buttons';
 })
 export class ButtonMapConfigurationComponent implements OnInit {
 
-  mappings: Mapping<Buttons, Buttons>[];
+  @Input() mappings: Array<Mapping<Buttons, Buttons>>;
+  @Output() mappingsChange = new EventEmitter<Array<Mapping<Buttons, Buttons>>>();
   currentMapping: Mapping<Buttons, Buttons>;
   editing = false;
   constructor() {
     this.currentMapping = new Mapping(new Buttons(), new Buttons());
-    this.mappings = [];
   }
 
   ngOnInit() {
@@ -37,6 +37,7 @@ export class ButtonMapConfigurationComponent implements OnInit {
 
   deleteMapping(mapping: Mapping<Buttons, Buttons>) {
     this.mappings = this.mappings.filter((value) => value !== mapping);
+    this.mappingsChange.emit(this.mappings);
   }
 
 }

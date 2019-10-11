@@ -1,4 +1,8 @@
 ﻿import { Component, OnInit } from '@angular/core';
+import {Mapping} from '../../model/mapping';
+import {Buttons} from '../../model/buttons';
+import {Coordinates} from '../../model/coordinates';
+import {CirclePad} from '../../model/circle-pad';
 
 @Component({
   selector: 'app-blank',
@@ -7,7 +11,9 @@
 })
 export class BuilderConfigComponent implements OnInit {
 
-  testValue = 0xc03;
+  buttonMappings = new Array<Mapping<Buttons, Buttons>>();
+  touchscreenMappings = new Array<Mapping<Buttons, Coordinates>>();
+  cpadMappings = new Array<Mapping<Buttons, CirclePad>>();
   constructor() { }
 
   ngOnInit() {

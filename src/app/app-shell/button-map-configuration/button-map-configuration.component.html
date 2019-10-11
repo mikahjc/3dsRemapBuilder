@@ -7,9 +7,11 @@
             <li *ngIf="mappings.length === 0" class="list-group-item">No mappings defined</li>
             <li *ngFor="let mapping of mappings" class="list-group-item">
                 {{mapping.toString()}}<br>
+                <div class="d-flex flex-row">
                 <button type="button" class="btn btn-secondary"
                         (click)="loadMapping(mapping)">{{mapping === currentMapping ? 'Done' : 'Edit'}}</button>
                 <button type="button" class="btn btn-danger" (click)="deleteMapping(mapping)">Delete</button>
+                </div>
             </li>
         </ul>
     </div>

@@ -1,18 +1,18 @@
 ﻿<main id="mainContent">
     <ngb-accordion activeIds="buttons">
-        <ngb-panel title="Buttons" id="buttons">
+        <ngb-panel [title]="'Buttons: ' + buttonMappings.length + ' mappings'" id="buttons">
             <ng-template ngbPanelContent>
-                <app-button-map-configuration style="width: 100%"></app-button-map-configuration>
+                <app-button-map-configuration style="width: 100%" [(mappings)]="buttonMappings"></app-button-map-configuration>
             </ng-template>
         </ngb-panel>
-        <ngb-panel title="Touchscreen">
+        <ngb-panel [title]="'Touchscreen: ' + touchscreenMappings.length + ' mappings'" id="ts">
             <ng-template ngbPanelContent>
-                <app-touchscreen-configuration style="width: 100%"></app-touchscreen-configuration>
+                <app-touchscreen-configuration style="width: 100%" [(mappings)]="touchscreenMappings"></app-touchscreen-configuration>
             </ng-template>
         </ngb-panel>
-        <ngb-panel title="Circle Pad">
+        <ngb-panel [title]="'Circle Pad: ' + cpadMappings.length + ' mappings'" id="cpad">
             <ng-template ngbPanelContent>
-                <app-circle-pad-configuration style="width: 100%"></app-circle-pad-configuration>
+                <app-circle-pad-configuration style="width: 100%" [(mappings)]="cpadMappings"></app-circle-pad-configuration>
             </ng-template>
         </ngb-panel>
     </ngb-accordion>

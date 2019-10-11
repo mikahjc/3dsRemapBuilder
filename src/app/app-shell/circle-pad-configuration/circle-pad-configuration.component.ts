@@ -1,4 +1,4 @@
-import {Component, ElementRef, OnInit} from '@angular/core';
+import {Component, ElementRef, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {Mapping} from '../../model/mapping';
 import {Buttons} from '../../model/buttons';
 import {Coordinates} from '../../model/coordinates';
@@ -12,13 +12,12 @@ import {CirclePad} from '../../model/circle-pad';
 export class CirclePadConfigurationComponent implements OnInit {
 
   readonly diameter = 150;
-  mappings: Mapping<Buttons, CirclePad>[];
+  @Input() mappings: Array<Mapping<Buttons, CirclePad>>;
+  @Output() mappingsChange = new EventEmitter<Array<Mapping<Buttons, CirclePad>>>();
   currentMapping: Mapping<Buttons, CirclePad>;
-  background: string;
   clicked = false;
   constructor() {
-    this.currentMapping = new Mapping(new Buttons(), new Coordinates((this.diameter * (2 / 3)) / 2, (this.diameter * (2 / 3)) / 2));
-    this.mappings = [];
+    this.currentMapping = new Mapping(new Buttons(), new CirclePad(this.diameter * (2 / 3)));
   }
 
   ngOnInit() {
@@ -49,12 +48,12 @@ export class CirclePadConfigurationComponent implements OnInit {
 
   saveCurrent() {
     this.mappings.push(this.currentMapping);
-    this.currentMapping = new Mapping(new Buttons(), new Coordinates());
+    this.currentMapping = new Mapping(new Buttons(), new CirclePad(this.diameter * (2 / 3)));
   }
 
   loadMapping(mapping: Mapping<Buttons, CirclePad>) {
     if (mapping === this.currentMapping) {
-      this.currentMapping = new Mapping(new Buttons(), new Coordinates());
+      this.currentMapping = new Mapping(new Buttons(), new CirclePad(this.diameter * (2 / 3)));
     } else {
       this.currentMapping = mapping;
     }
@@ -62,6 +61,7 @@ export class CirclePadConfigurationComponent implements OnInit {
 
   deleteMapping(mapping: Mapping<Buttons, CirclePad>) {
     this.mappings = this.mappings.filter((value) => value !== mapping);
+    this.mappingsChange.emit(this.mappings);
   }
 
 }
