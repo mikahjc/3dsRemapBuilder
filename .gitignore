@@ -6,6 +6,8 @@
 # production
 /server/build
 
+# ts dist
+**/dist/
 
 # testing
 /coverage
