@@ -8,6 +8,7 @@
 
 # ts dist
 **/dist/
+**/node_modules
 
 # testing
 /coverage

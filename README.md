@@ -51,9 +51,9 @@ The front-end is served on http://localhost:3000/ and the back-end on http://loc
 .
 ├── server/ - Express server that provides API routes and serves front-end
 │ ├── routes/ - Handles API calls for routes
-│ ├── app.js - Adds middleware to the express server
-│ ├── constants.js - Defines the constants for the endpoints and port
-│ └── server.js - Configures Port and HTTP Server
+│ ├── app.ts - Adds middleware to the express server
+│ ├── constants.ts - Defines the constants for the endpoints and port
+│ └── server.ts - Configures Port and HTTP Server
 ├── src - Angular front-end
 │ └── app - Angular main root module
 │    ├── app-shell - Angular main components
