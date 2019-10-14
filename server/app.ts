@@ -5,7 +5,7 @@ import * as path from 'path';
 import cookieParser from 'cookie-parser';
 import logger from 'morgan';
 
-import { IndexRouter } from './routes';
+import IndexRouter from './routes';
 import HttpException from './exceptions/http-exception';
 
 const app = express();

@@ -1,8 +1,8 @@
 ﻿import { Component, OnInit } from '@angular/core';
-import {Mapping} from '../../model/mapping';
-import {Buttons} from '../../model/buttons';
-import {Coordinates} from '../../model/coordinates';
-import {CirclePad} from '../../model/circle-pad';
+import {Mapping} from '../../../../shared/model/mapping';
+import {Buttons} from '../../../../shared/model/buttons';
+import {Coordinates} from '../../../../shared/model/coordinates';
+import {CirclePad} from '../../../../shared/model/circle-pad';
 
 @Component({
   selector: 'app-blank',

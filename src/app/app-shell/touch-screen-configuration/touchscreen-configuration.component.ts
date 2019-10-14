@@ -1,7 +1,7 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {Mapping} from '../../model/mapping';
-import {Buttons} from '../../model/buttons';
-import {Coordinates} from '../../model/coordinates';
+import {Mapping} from '../../../../shared/model/mapping';
+import {Buttons} from '../../../../shared/model/buttons';
+import {Coordinates} from '../../../../shared/model/coordinates';
 
 @Component({
   selector: 'app-touchscreen-configuration',

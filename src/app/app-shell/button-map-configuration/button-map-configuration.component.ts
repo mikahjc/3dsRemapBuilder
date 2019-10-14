@@ -1,6 +1,6 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {Mapping} from '../../model/mapping';
-import {Buttons} from '../../model/buttons';
+import {Mapping} from '../../../../shared/model/mapping';
+import {Buttons} from '../../../../shared/model/buttons';
 
 @Component({
   selector: 'app-button-map-configuration',

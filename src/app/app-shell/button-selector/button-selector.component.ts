@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, Output } from '@angular/core';
 import { EventEmitter } from '@angular/core';
-import {Buttons} from '../../model/buttons';
+import {Buttons} from '../../../../shared/model/buttons';
 
 @Component({
   selector: 'app-button-selector',

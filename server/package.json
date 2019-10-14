@@ -11,11 +11,13 @@
     "@types/express": "^4.17.1",
     "@types/http-errors": "^1.6.2",
     "@types/morgan": "^1.7.37",
+    "@types/tmp": "^0.1.0",
     "cookie-parser": "~1.4.3",
     "debug": "~2.6.9",
     "express": "~4.16.0",
     "http-errors": "~1.6.2",
-    "morgan": "~1.9.0"
+    "morgan": "~1.9.0",
+    "tmp": "^0.1.0"
   },
   "engines": {
     "node": ">=10.14.1"
