@@ -6,8 +6,6 @@ RUN curl -sL https://deb.nodesource.com/setup_13.x | bash - \
 
 RUN git clone -b builder https://github.com/mikahjc/buttonswap3ds.git /usr/src/buttonswap3ds
 ENV BUTTONSWAP_SRC_LOCATION /usr/src/buttonswap3ds
-ENV PORT 80
-EXPOSE 80
 
 COPY server/package*.json /srv/
 RUN cd /srv && npm install

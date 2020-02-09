@@ -11,7 +11,23 @@ export class CirclePad {
     }
 
     toString(): string {
-        return `X: ${(this.x / this.diameter) * 100}%, Y: ${(this.y / this.diameter) * 100}%`;
+        return `X: ${this.getXPercent()}%, Y: ${this.getYPercent()}%`;
+    }
+
+    getXPercent(): number {
+        return (this.x / this.diameter) * 100;
+    }
+
+    getYPercent(): number {
+        return (this.y / this.diameter) * 100;
+    }
+
+    setXPercent(percent: number): void {
+        this.x = this.diameter * percent;
+    }
+
+    setYPercent(percent: number): void {
+        this.y = this.diameter * percent;
     }
 
     toData(): number {

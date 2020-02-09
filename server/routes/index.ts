@@ -25,8 +25,6 @@ IndexRouter.post('/build', async (req, res) => {
     let cpadFile = '';
     if (config.hasOwnProperty('buttons')) {
         const buttonMappings: Array<Mapping<string, string>> = config.buttons;
-        // tslint:disable-next-line:no-console
-        console.log(buttonMappings);
         if (buttonMappings.length > 0) {
             for (const mapping of buttonMappings) {
                 buttonsFile += `ldr r4, =${mapping.input}\nldr r5, =${mapping.output}\nbl .button\n`;
@@ -37,8 +35,6 @@ IndexRouter.post('/build', async (req, res) => {
 
     if (config.hasOwnProperty('touchscreen')) {
         const tsMappings: Array<Mapping<string, string>> = config.touchscreen;
-        // tslint:disable-next-line:no-console
-        console.log(tsMappings);
         if (tsMappings.length > 0) {
             for (const mapping of tsMappings) {
                 tsFile += `ldr r4, =${mapping.input}\nldr r6, =${mapping.output}\nbl .touch\n`;
@@ -49,8 +45,6 @@ IndexRouter.post('/build', async (req, res) => {
 
     if (config.hasOwnProperty('cpad')) {
         const cpadMappings: Array<Mapping<string, string>> = config.cpad;
-        // tslint:disable-next-line:no-console
-        console.log(cpadMappings);
         if (cpadMappings.length > 0) {
             for (const mapping of cpadMappings) {
                 cpadFile += `ldr r4, =${mapping.input}\nldr r6, =${mapping.output}\nbl .cpad\n`;
