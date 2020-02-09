@@ -15,9 +15,13 @@ export class CirclePadConfigurationComponent implements OnInit {
   @Input() mappings: Array<Mapping<Buttons, CirclePad>>;
   @Output() mappingsChange = new EventEmitter<Array<Mapping<Buttons, CirclePad>>>();
   currentMapping: Mapping<Buttons, CirclePad>;
+  currentMappingX: number;
+  currentMappingY: number;
   clicked = false;
   constructor() {
     this.currentMapping = new Mapping(new Buttons(), new CirclePad(this.diameter * (2 / 3)));
+    this.currentMappingX = this.currentMapping.output.getXPercent();
+    this.currentMappingY = this.currentMapping.output.getYPercent();
   }
 
   ngOnInit() {
@@ -33,8 +37,10 @@ export class CirclePadConfigurationComponent implements OnInit {
 
   moveCpad(event: MouseEvent) {
     if (this.clicked) {
-      this.currentMapping.output.x = event.offsetX;
-      this.currentMapping.output.y = event.offsetY;
+      this.currentMapping.output.x = Math.max(0, event.offsetX);
+      this.currentMapping.output.y = Math.max(0, event.offsetY);
+      this.currentMappingX = this.currentMapping.output.getXPercent();
+      this.currentMappingY = this.currentMapping.output.getYPercent();
     }
   }
 

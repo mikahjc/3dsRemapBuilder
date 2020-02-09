@@ -23,6 +23,16 @@
                              (mousedown)="mouseDownCpad()"
                              (mouseup)="mouseUpCpad()"></div>
                     </div>
+                    <div class="d-flex">
+                        <div class="form-group">
+                            <label for="cpadXManual">X Position %</label>
+                            <input type="number" min="0" max="100" class="form-control" id="cpadXManual" [(ngModel)]="currentMappingX" (ngModelChange)="currentMapping.output.setXPercent($event / 100)">
+                        </div>
+                        <div class="form-group">
+                            <label for="cpadYManual">Y Position %</label>
+                            <input type="number" min="0" max="100" class="form-control" id="cpadYManual" [(ngModel)]="currentMappingY" (ngModelChange)="currentMapping.output.setYPercent($event / 100)">
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
