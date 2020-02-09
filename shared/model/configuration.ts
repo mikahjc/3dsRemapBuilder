@@ -1,12 +1,11 @@
 import {Mapping} from './mapping';
-import {Buttons} from './buttons';
-import {Coordinates} from './coordinates';
-import {CirclePad} from './circle-pad';
 
 export class Configuration {
-    buttons: Array<Mapping<string, string>>;
-    touchscreen: Array<Mapping<string, string>>;
-    cpad: Array<Mapping<string, string>>;
+    buttons?: Array<Mapping<string, string>>;
+    touchscreen?: Array<Mapping<string, string>>;
+    cpad?: Array<Mapping<string, string>>;
+    uniqueId?: string;
+    productCode?: string;
 
     constructor(object: any) {
         for (const prop of object) {

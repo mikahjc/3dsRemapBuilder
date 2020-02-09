@@ -3,7 +3,21 @@
     <ngb-accordion activeIds="buttons">
         <ngb-panel [title]="'Main Config'" id="main">
             <ng-template ngbPanelContent>
-
+                You can adjust some of the build settings here. Defaults are shown.
+                <div class="form-group">
+                    <label for="fileName">File name</label>
+                    <input type="text" class="form-control" id="fileName" placeholder="ButtonSwap3ds" [(ngModel)]="fileName">
+                    <small class="form-text text-muted">This only sets the name of the file you download</small>
+                </div>
+                <div class="form-group">
+                    <label for="productCode">Product Code</label>
+                    <input type="text" class="form-control" id="productCode" placeholder="CTR-HB-BTS3" [(ngModel)]="productCode">
+                </div>
+                <div class="form-group">
+                    <label for="uniqueId">Unique ID</label>
+                    <input type="text" class="form-control" id="uniqueId" placeholder="96E9E" [(ngModel)]="uniqueId">
+                    <small class="form-text text-muted">Make this unique if you want multiple swappers installed</small>
+                </div>
             </ng-template>
         </ngb-panel>
         <ngb-panel [title]="'Buttons: ' + buttonMappings.length + ' mappings'" id="buttons">

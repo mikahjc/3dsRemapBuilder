@@ -5,6 +5,7 @@ import {Coordinates} from '../../../../shared/model/coordinates';
 import {CirclePad} from '../../../../shared/model/circle-pad';
 import {BuildService} from '../services/build.service';
 import {saveAs} from 'file-saver';
+import {Configuration} from '../../../../shared/model/configuration';
 
 @Component({
   selector: 'builder-config',
@@ -17,6 +18,9 @@ export class BuilderConfigComponent implements OnInit {
   touchscreenMappings = new Array<Mapping<Buttons, Coordinates>>();
   cpadMappings = new Array<Mapping<Buttons, CirclePad>>();
   building = false;
+  fileName = '';
+  productCode = '';
+  uniqueId = '';
   constructor(private buildService: BuildService) { }
 
   ngOnInit() {
@@ -27,6 +31,7 @@ export class BuilderConfigComponent implements OnInit {
     const buttons: Array<Mapping<string, string>> = [];
     const touchscreen = [];
     const cpad = [];
+    const fileName = this.fileName === '' ? 'ButtonSwap3ds' : this.fileName;
     for (const mapping of this.buttonMappings) {
       buttons.push(new Mapping(`0x${mapping.input.toMask().toString(16)}`, `0x${mapping.output.toMask().toString(16)}`));
     }
@@ -37,9 +42,16 @@ export class BuilderConfigComponent implements OnInit {
       console.log(mapping.input.toString());
       cpad.push(new Mapping(`0x${mapping.input.toMask().toString(16)}`, `0x${Math.floor(mapping.output.toData()).toString(16)}`));
     }
-    this.buildService.build({buttons, touchscreen, cpad})
+    const config: Configuration = {buttons, touchscreen, cpad};
+    if (this.uniqueId !== '') {
+      config.uniqueId = this.uniqueId;
+    }
+    if (this.productCode !== '') {
+      config.productCode = this.productCode;
+    }
+    this.buildService.build(config)
         .subscribe(cia => {
-          saveAs(cia, 'ButtonSwap3ds.cia');
+          saveAs(cia, `${fileName}.cia`);
           this.building = false;
         });
   }
