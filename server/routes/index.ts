@@ -1,8 +1,8 @@
 ﻿import * as express from 'express';
 import * as tmp from 'tmp';
 import {Mapping} from '../../shared/model/mapping';
-import * as fs from 'fs';
-import { execSync } from 'child_process';
+import * as fs from 'fs-extra';
+import {exec, execSync} from 'child_process';
 
 const IndexRouter = express.Router();
 IndexRouter.get('/test', (req, res) => {
@@ -13,11 +13,12 @@ IndexRouter.post('/build', async (req, res) => {
     const config = req.body;
     // get temp directory to use for build includes and output
     const tmpDir = tmp.dirSync();
+    const tmpDirName = tmpDir.name;
 
     const productCode = config.hasOwnProperty('productCode') ? config.productCode : 'CTR-HB-BTS3';
     const uniqueId = config.hasOwnProperty('uniqueId') ? config.uniqueId : '96e9e';
     const rsf = generateRsf(productCode, uniqueId);
-    fs.writeFileSync(`${tmpDir.name}/cia.rsf`, rsf);
+    fs.writeFileSync(`${tmpDirName}/cia.rsf`, rsf);
 
     let buttonsFile = '';
     let tsFile = '';
@@ -32,7 +33,7 @@ IndexRouter.post('/build', async (req, res) => {
             }
         }
     }
-    fs.writeFileSync(`${tmpDir.name}/button.s`, buttonsFile);
+    fs.writeFileSync(`${tmpDirName}/button.s`, buttonsFile);
 
     if (config.hasOwnProperty('touchscreen')) {
         const tsMappings: Array<Mapping<string, string>> = config.touchscreen;
@@ -44,7 +45,7 @@ IndexRouter.post('/build', async (req, res) => {
             }
         }
     }
-    fs.writeFileSync(`${tmpDir.name}/ts.s`, tsFile);
+    fs.writeFileSync(`${tmpDirName}/ts.s`, tsFile);
 
     if (config.hasOwnProperty('cpad')) {
         const cpadMappings: Array<Mapping<string, string>> = config.cpad;
@@ -56,36 +57,31 @@ IndexRouter.post('/build', async (req, res) => {
             }
         }
     }
-    fs.writeFileSync(`${tmpDir.name}/cpad.s`, cpadFile);
+    fs.writeFileSync(`${tmpDirName}/cpad.s`, cpadFile);
 
-    execSync(`make -C ${process.env.BUTTONSWAP_SRC_LOCATION} clean`, {
-        cwd: tmpDir.name,
+    exec(`make -C ${process.env.BUTTONSWAP_SRC_LOCATION}`, {
+        cwd: process.env.BUTTONSWAP_SRC_LOCATION,
         env: {
-            DEVKITARM: '/opt/devkitpro/devkitARM',
-            DEVKITPRO: 'opt/devkitpro',
-            PATH: process.env.PATH,
-        },
-    });
-
-    execSync(`make -C ${process.env.BUTTONSWAP_SRC_LOCATION}`, {
-        cwd: tmpDir.name,
-        env: {
-            USERCONF: tmpDir.name,
+            USERCONF: tmpDirName,
             DEVKITARM: '/opt/devkitpro/devkitARM',
             DEVKITPRO: '/opt/devkitpro',
             PATH: process.env.PATH,
+            BUTTONSWAP_SRC_LOCATION: process.env.BUTTONSWAP_SRC_LOCATION,
         },
-    });
+    }, (async (error, stdout, stderr) => {
+        if (error) {
+            // tslint:disable-next-line:no-console
+            console.log(stdout);
+            // tslint:disable-next-line:no-console
+            console.log(stderr);
+            res.status(500).send({stderr});
+        } else {
+            res.download(`${tmpDirName}/buttonswap3ds.cia`);
 
-    // tslint:disable-next-line:no-console
-    console.log(tmpDir.name);
-    res.download(`${tmpDir.name}/buttonswap3ds.cia`);
-
-    // fs.unlinkSync(`${tmpDir.name}/button.s`);
-    // fs.unlinkSync(`${tmpDir.name}/ts.s`);
-    // fs.unlinkSync(`${tmpDir.name}/cpad.s`);
-
-    // tmpDir.removeCallback();
+            tmpDir.removeCallback();
+            await fs.remove(tmpDirName);
+        }
+    }));
 });
 
 const generateRsf = (productCode: string, uniqueId: string) => {

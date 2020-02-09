@@ -55,6 +55,7 @@
     "start-frontend": "ng serve --port=3000 --o --proxy-config proxy.config.json",
     "ng": "ng",
     "build": "node ./buildScript",
+    "build:all": "concurrently \"tsc -p server\" \"npm run build\"",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
