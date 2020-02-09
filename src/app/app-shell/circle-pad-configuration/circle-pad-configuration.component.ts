@@ -55,11 +55,15 @@ export class CirclePadConfigurationComponent implements OnInit {
   saveCurrent() {
     this.mappings.push(this.currentMapping);
     this.currentMapping = new Mapping(new Buttons(), new CirclePad(this.diameter * (2 / 3)));
+    this.currentMappingX = this.currentMapping.output.getXPercent();
+    this.currentMappingY = this.currentMapping.output.getYPercent();
   }
 
   loadMapping(mapping: Mapping<Buttons, CirclePad>) {
     if (mapping === this.currentMapping) {
       this.currentMapping = new Mapping(new Buttons(), new CirclePad(this.diameter * (2 / 3)));
+      this.currentMappingX = this.currentMapping.output.getXPercent();
+      this.currentMappingY = this.currentMapping.output.getYPercent();
     } else {
       this.currentMapping = mapping;
     }
