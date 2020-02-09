@@ -13,7 +13,7 @@ export class Coordinates {
 
     toTsData(): number {
         const rawX = Math.floor((this.x / 319) * 0xfff);
-        const rawY = Math.floor((this.y / 239) * 0xfff);
+        const rawY = Math.floor(((239 - this.y) / 239) * 0xfff);
         return 0x1000000 | rawX | (rawY << 12);
     }
 }

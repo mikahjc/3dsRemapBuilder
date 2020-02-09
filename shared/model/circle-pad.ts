@@ -15,6 +15,9 @@ export class CirclePad {
     }
 
     toData(): number {
-        return (((this.y / this.diameter) * CirclePad.MAX_RAW_VAL) << 12) + ((this.x / this.diameter) * CirclePad.MAX_RAW_VAL);
+        const xRawVal = Math.floor(Math.min((this.x / this.diameter), 1) * CirclePad.MAX_RAW_VAL);
+        const yRawVal = Math.floor(Math.min(((this.diameter - this.y) / this.diameter), 1) * CirclePad.MAX_RAW_VAL);
+        console.log(xRawVal, yRawVal);
+        return 8390656 ^ ((xRawVal) + (yRawVal << 12));
     }
 }

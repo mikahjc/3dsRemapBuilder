@@ -1,5 +1,11 @@
 ﻿<main id="mainContent">
+    <button class="btn btn-primary" (click)="buildCurrent()" [disabled]="building">Build this config</button>
     <ngb-accordion activeIds="buttons">
+        <ngb-panel [title]="'Main Config'" id="main">
+            <ng-template ngbPanelContent>
+
+            </ng-template>
+        </ngb-panel>
         <ngb-panel [title]="'Buttons: ' + buttonMappings.length + ' mappings'" id="buttons">
             <ng-template ngbPanelContent>
                 <app-button-map-configuration style="width: 100%" [(mappings)]="buttonMappings"></app-button-map-configuration>

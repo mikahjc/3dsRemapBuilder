@@ -22,6 +22,7 @@
     "core-js": "^2.5.4",
     "debug": "~4.1.1",
     "express": "^4.16.4",
+    "file-saver": "^2.0.2",
     "font-awesome": "^4.7.0",
     "fs-extra": "8.1.0",
     "morgan": "^1.9.1",
@@ -57,7 +58,7 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "start-backend": "concurrently \"tsc -p server -w\" \"nodemon server/dist/server.js\""
+    "start-backend": "concurrently \"tsc -p server -w\" \"nodemon server/dist/server/server.js\""
   },
   "proxy": "http://localhost:3001",
   "browserslist": [
