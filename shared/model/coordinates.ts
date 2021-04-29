@@ -1,4 +1,6 @@
-export class Coordinates {
+import { InputClass } from "./input-class";
+
+export class Coordinates implements InputClass{
     x: number;
     y: number;
 
@@ -9,6 +11,10 @@ export class Coordinates {
 
     toString(): string {
         return `${this.x}, ${this.y}`;
+    }
+
+    toRehid(): number[] {
+        return [this.x, this.y]
     }
 
     toTsData(): number {

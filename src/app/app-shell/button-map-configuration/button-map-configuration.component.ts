@@ -10,6 +10,7 @@ import {Buttons} from '../../../../shared/model/buttons';
 export class ButtonMapConfigurationComponent implements OnInit {
 
   @Input() mappings: Array<Mapping<Buttons, Buttons>>;
+  @Input() rehidMode: boolean;
   @Output() mappingsChange = new EventEmitter<Array<Mapping<Buttons, Buttons>>>();
   currentMapping: Mapping<Buttons, Buttons>;
   editing = false;

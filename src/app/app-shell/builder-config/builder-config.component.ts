@@ -6,6 +6,7 @@ import {CirclePad} from '../../../../shared/model/circle-pad';
 import {BuildService} from '../services/build.service';
 import {saveAs} from 'file-saver';
 import {Configuration} from '../../../../shared/model/configuration';
+import { RehidConfig, RehidMapping } from '../model/rehid-config';
 
 @Component({
   selector: 'builder-config',
@@ -18,41 +19,78 @@ export class BuilderConfigComponent implements OnInit {
   touchscreenMappings = new Array<Mapping<Buttons, Coordinates>>();
   cpadMappings = new Array<Mapping<Buttons, CirclePad>>();
   building = false;
+  rehidMode = true;
   fileName = '';
   productCode = '';
   uniqueId = '';
+  dpadtocpad = false;
+  cpadtodpad = false;
+  overridecpadpro = false;
   constructor(private buildService: BuildService) { }
 
   ngOnInit() {
   }
 
+  cPadDpadExclusive(opt: string) {
+    if (opt === 'cpad' && this.cpadtodpad && this.dpadtocpad) {
+      this.dpadtocpad = false;
+    } else if (opt === 'dpad' && this.dpadtocpad && this.cpadtodpad) {
+      this.cpadtodpad = false;
+    }
+  }
+
   buildCurrent() {
     this.building = true;
-    const buttons: Array<Mapping<string, string>> = [];
-    const touchscreen = [];
-    const cpad = [];
-    const fileName = this.fileName === '' ? 'ButtonSwap3ds' : this.fileName;
-    for (const mapping of this.buttonMappings) {
-      buttons.push(new Mapping(`0x${mapping.input.toMask().toString(16)}`, `0x${mapping.output.toMask().toString(16)}`));
+    if (this.rehidMode) {
+      const rehid = new RehidConfig();
+      this.buttonMappings.forEach(m => {
+        rehid.keys.push(new RehidMapping(m.input.toRehid(), m.output.toRehid()))
+      })
+      this.touchscreenMappings.forEach(m => {
+        rehid.touch.push(new RehidMapping(m.input.toRehid(), m.output.toRehid()))
+      })
+      this.cpadMappings.forEach(m => {
+        rehid.cpad.push(new RehidMapping(m.input.toRehid(), m.output.toRehid()))
+      })
+      rehid.cpadtodpad = this.cpadtodpad;
+      rehid.dpadtocpad = this.dpadtocpad;
+      rehid.overridecpadpro = this.overridecpadpro;
+      console.log(rehid)
+      const file = new Blob([JSON.stringify(rehid, (k, v) => {
+        if ((typeof v === "boolean" && !v) || (Array.isArray(v) && v.length === 0)) {
+          return undefined
+        } else {
+          return v
+        }})], {type: "application/json;charset=utf-8"})
+      saveAs(file, 'rehid.json')
+      this.building = false;
+    } else {
+      const buttons: Array<Mapping<string, string>> = [];
+      const touchscreen = [];
+      const cpad = [];
+      const fileName = this.fileName === '' ? 'ButtonSwap3ds' : this.fileName;
+      for (const mapping of this.buttonMappings) {
+        buttons.push(new Mapping(`0x${mapping.input.toMask().toString(16)}`, `0x${mapping.output.toMask().toString(16)}`));
+      }
+      for (const mapping of this.touchscreenMappings) {
+        touchscreen.push(new Mapping(`0x${mapping.input.toMask().toString(16)}`, `0x${mapping.output.toTsData().toString(16)}`));
+      }
+      for (const mapping of this.cpadMappings) {
+        console.log(mapping.input.toString());
+        cpad.push(new Mapping(`0x${mapping.input.toMask().toString(16)}`, `0x${Math.floor(mapping.output.toData()).toString(16)}`));
+      }
+      const config: Configuration = {buttons, touchscreen, cpad};
+      if (this.uniqueId !== '') {
+        config.uniqueId = this.uniqueId;
+      }
+      if (this.productCode !== '') {
+        config.productCode = this.productCode;
+      }
+      this.buildService.build(config)
+          .subscribe(cia => {
+            saveAs(cia, `${fileName}.cia`);
+            this.building = false;
+          });
     }
-    for (const mapping of this.touchscreenMappings) {
-      touchscreen.push(new Mapping(`0x${mapping.input.toMask().toString(16)}`, `0x${mapping.output.toTsData().toString(16)}`));
-    }
-    for (const mapping of this.cpadMappings) {
-      console.log(mapping.input.toString());
-      cpad.push(new Mapping(`0x${mapping.input.toMask().toString(16)}`, `0x${Math.floor(mapping.output.toData()).toString(16)}`));
-    }
-    const config: Configuration = {buttons, touchscreen, cpad};
-    if (this.uniqueId !== '') {
-      config.uniqueId = this.uniqueId;
-    }
-    if (this.productCode !== '') {
-      config.productCode = this.productCode;
-    }
-    this.buildService.build(config)
-        .subscribe(cia => {
-          saveAs(cia, `${fileName}.cia`);
-          this.building = false;
-        });
   }
 }

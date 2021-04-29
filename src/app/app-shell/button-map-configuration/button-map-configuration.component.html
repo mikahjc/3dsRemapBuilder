@@ -15,6 +15,6 @@
             </li>
         </ul>
     </div>
-    <app-button-selector class="flex-fill third" [(mask)]="currentMapping.input" [title]="'When I press...'"></app-button-selector>
-    <app-button-selector class="flex-fill third" [(mask)]="currentMapping.output" [title]="'I want to swap to...'"></app-button-selector>
+    <app-button-selector class="flex-fill third" [(mask)]="currentMapping.input" [title]="'When I press...'" [rehidMode]="rehidMode"></app-button-selector>
+    <app-button-selector class="flex-fill third" [(mask)]="currentMapping.output" [title]="'I want to swap to...'" [rehidMode]="rehidMode" [isOutput]="true"></app-button-selector>
 </div>

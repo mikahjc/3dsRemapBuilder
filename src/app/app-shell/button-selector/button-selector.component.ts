@@ -16,6 +16,8 @@ export class ButtonSelectorComponent implements OnInit {
   }
   @Input() title: string;
   @Output() maskChange = new EventEmitter();
+  @Input() rehidMode: boolean;
+  @Input() isOutput = false;
   buttons: Buttons;
   constructor() { }
 
