@@ -9,6 +9,7 @@ import { ButtonMapConfigurationComponent } from '../button-map-configuration/but
 import { FormsModule } from '@angular/forms';
 import {TouchscreenConfigurationComponent} from '../touch-screen-configuration/touchscreen-configuration.component';
 import {CirclePadConfigurationComponent} from '../circle-pad-configuration/circle-pad-configuration.component';
+import { QRCodeModule } from 'angularx-qrcode'
 
 
 @NgModule({
@@ -23,7 +24,8 @@ import {CirclePadConfigurationComponent} from '../circle-pad-configuration/circl
     CommonModule,
     BuilderConfigRoutingModule,
     NgbModule,
-    FormsModule
+    FormsModule,
+    QRCodeModule,
   ]
 })
 export class BuilderConfigModule { }

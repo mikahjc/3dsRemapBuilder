@@ -46,7 +46,12 @@ export class BuilderConfigComponent implements OnInit {
   }
 
   private rehidConfigAsString(): string {
-    return JSON.stringify(this.buildRehidConfig())
+    return JSON.stringify(this.buildRehidConfig(), (k, v) => {
+      if ((typeof v === "boolean" && !v) || (Array.isArray(v) && v.length === 0)) {
+        return undefined
+      } else {
+        return v
+      }})
   }
 
   private buildRehidConfig(): RehidConfig {
@@ -69,13 +74,7 @@ export class BuilderConfigComponent implements OnInit {
   buildCurrent() {
     this.building = true;
     if (this.rehidMode) {
-      const rehid = this.buildRehidConfig();
-      const file = new Blob([JSON.stringify(rehid, (k, v) => {
-        if ((typeof v === "boolean" && !v) || (Array.isArray(v) && v.length === 0)) {
-          return undefined
-        } else {
-          return v
-        }})], {type: "application/json;charset=utf-8"})
+      const file = new Blob([this.rehidConfigAsString()], {type: "application/json;charset=utf-8"})
       saveAs(file, 'rehid.json')
       this.building = false;
     } else {

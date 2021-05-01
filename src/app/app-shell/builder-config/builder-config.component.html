@@ -6,7 +6,11 @@
         </button>
       </div>
       <div class="modal-body">
-        <qrcode [qrdata]="rehidConfigAsString()" [width]="256"></qrcode>
+          <div class="row">
+            <div class="col-md-8 offset-md-2">
+                <qrcode [qrdata]="rehidConfigAsString()" [width]="256"></qrcode>
+            </div>
+          </div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-outline-dark" (click)="modal.close('done button')">Done</button>
