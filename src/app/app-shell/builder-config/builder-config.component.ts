@@ -1,4 +1,5 @@
-﻿import { Component, OnInit } from '@angular/core';
+﻿
+import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 import {Mapping} from '../../../../shared/model/mapping';
 import {Buttons} from '../../../../shared/model/buttons';
 import {Coordinates} from '../../../../shared/model/coordinates';
@@ -7,6 +8,7 @@ import {BuildService} from '../services/build.service';
 import {saveAs} from 'file-saver';
 import {Configuration} from '../../../../shared/model/configuration';
 import { RehidConfig, RehidMapping } from '../model/rehid-config';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'builder-config',
@@ -26,7 +28,7 @@ export class BuilderConfigComponent implements OnInit {
   dpadtocpad = false;
   cpadtodpad = false;
   overridecpadpro = false;
-  constructor(private buildService: BuildService) { }
+  constructor(private buildService: BuildService, private modalService: NgbModal) { }
 
   ngOnInit() {
   }
@@ -39,23 +41,35 @@ export class BuilderConfigComponent implements OnInit {
     }
   }
 
+  openModal(content: any) {
+    this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'})
+  }
+
+  private rehidConfigAsString(): string {
+    return JSON.stringify(this.buildRehidConfig())
+  }
+
+  private buildRehidConfig(): RehidConfig {
+    const rehid = new RehidConfig();
+    this.buttonMappings.forEach(m => {
+      rehid.keys.push(new RehidMapping(m.input.toRehid(), m.output.toRehid()))
+    })
+    this.touchscreenMappings.forEach(m => {
+      rehid.touch.push(new RehidMapping(m.input.toRehid(), m.output.toRehid()))
+    })
+    this.cpadMappings.forEach(m => {
+      rehid.cpad.push(new RehidMapping(m.input.toRehid(), m.output.toRehid()))
+    })
+    rehid.cpadtodpad = this.cpadtodpad;
+    rehid.dpadtocpad = this.dpadtocpad;
+    rehid.overridecpadpro = this.overridecpadpro;
+    return rehid;
+  }
+
   buildCurrent() {
     this.building = true;
     if (this.rehidMode) {
-      const rehid = new RehidConfig();
-      this.buttonMappings.forEach(m => {
-        rehid.keys.push(new RehidMapping(m.input.toRehid(), m.output.toRehid()))
-      })
-      this.touchscreenMappings.forEach(m => {
-        rehid.touch.push(new RehidMapping(m.input.toRehid(), m.output.toRehid()))
-      })
-      this.cpadMappings.forEach(m => {
-        rehid.cpad.push(new RehidMapping(m.input.toRehid(), m.output.toRehid()))
-      })
-      rehid.cpadtodpad = this.cpadtodpad;
-      rehid.dpadtocpad = this.dpadtocpad;
-      rehid.overridecpadpro = this.overridecpadpro;
-      console.log(rehid)
+      const rehid = this.buildRehidConfig();
       const file = new Blob([JSON.stringify(rehid, (k, v) => {
         if ((typeof v === "boolean" && !v) || (Array.isArray(v) && v.length === 0)) {
           return undefined

@@ -5,11 +5,11 @@ import * as fs from 'fs-extra';
 import {exec, execSync} from 'child_process';
 
 const IndexRouter = express.Router();
-IndexRouter.get('/test', (req, res) => {
+IndexRouter.get('/test', (req: express.Request, res: express.Response) => {
    res.send('working\n');
 });
 
-IndexRouter.post('/build', async (req, res) => {
+IndexRouter.post('/build', async (req: express.Request, res: express.Response) => {
     const config = req.body;
     // get temp directory to use for build includes and output
     const tmpDir = tmp.dirSync();

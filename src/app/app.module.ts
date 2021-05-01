@@ -8,6 +8,7 @@ import { BuilderConfigModule } from './app-shell/builder-config/builder-config.m
 import { NavBarComponent } from './app-shell/nav-bar/nav-bar.component';
 import { FooterComponent } from './app-shell/footer/footer.component';
 import { NgbButtonLabel } from '@ng-bootstrap/ng-bootstrap';
+import { QRCodeModule } from 'angularx-qrcode';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { NgbButtonLabel } from '@ng-bootstrap/ng-bootstrap';
     HttpClientModule,
     AppRoutingModule,
     BuilderConfigModule,
+    QRCodeModule,
   ],
   providers: [NgbButtonLabel],
   bootstrap: [AppComponent]
