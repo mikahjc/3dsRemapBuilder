@@ -10,7 +10,7 @@
                 </li>
             </ul>
         </div>
-            <app-button-selector class="flex-fill third" [(mask)]="currentMapping.input" [title]="'When I press...'"></app-button-selector>
+            <app-button-selector class="flex-fill third" [(mask)]="currentMapping.input" [title]="'When I press...'" [rehidMode]="rehidMode"></app-button-selector>
         <div class="flex-fill third">
             <div class="card" (mouseup)="mouseUpCpad()">
                 <div class="card-body">

@@ -13,6 +13,7 @@ export class CirclePadConfigurationComponent implements OnInit {
 
   readonly diameter = 150;
   @Input() mappings: Array<Mapping<Buttons, CirclePad>>;
+  @Input() rehidMode: boolean;
   @Output() mappingsChange = new EventEmitter<Array<Mapping<Buttons, CirclePad>>>();
   currentMapping: Mapping<Buttons, CirclePad>;
   currentMappingX: number;

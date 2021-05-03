@@ -11,6 +11,7 @@ import {Coordinates} from '../../../../shared/model/coordinates';
 export class TouchscreenConfigurationComponent implements OnInit {
 
   @Input() mappings: Array<Mapping<Buttons, Coordinates>>;
+  @Input() rehidMode: boolean;
   @Output() mappingsChange = new EventEmitter<Array<Mapping<Buttons, Coordinates>>>();
   currentMapping: Mapping<Buttons, Coordinates>;
   background: string;

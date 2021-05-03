@@ -36,7 +36,7 @@
               <div class="row">
                 <div class="col-11">&nbsp;</div>
               </div>
-              <div class="row" *ngIf="!isOutput">
+              <div class="row" *ngIf="!isOutput && rehidMode">
                   <div class="col-1 offset-1">
                       <div class="btn-group-toggle">
                           <label [class.btn-secondary]="buttons.cup" [class.btn-outline-secondary]="!buttons.cup" ngbButtonLabel>
@@ -58,7 +58,7 @@
                       </div>
                   </div>
               </div>
-              <div class="row" *ngIf="!isOutput">
+              <div class="row" *ngIf="!isOutput && rehidMode">
                 <div class="col-2">
                     <div class="btn-group-toggle">
                         <label [class.btn-secondary]="buttons.cleft" [class.btn-outline-secondary]="!buttons.cleft" ngbButtonLabel>
@@ -88,7 +88,7 @@
                     </div>
                 </div>
               </div>
-              <div class="row" *ngIf="!isOutput">
+              <div class="row" *ngIf="!isOutput && rehidMode">
                   <div class="col-2 offset-1">
                       <div class="btn-group-toggle">
                           <label [class.btn-secondary]="buttons.cdown" [class.btn-outline-secondary]="!buttons.cdown" ngbButtonLabel>
@@ -105,7 +105,7 @@
                   </div>
               </div>
               
-              <div class="row" *ngIf="!isOutput">
+              <div class="row" *ngIf="!isOutput && rehidMode">
                 <div class="col-11">&nbsp;</div>
             </div>
               <div class="row">
