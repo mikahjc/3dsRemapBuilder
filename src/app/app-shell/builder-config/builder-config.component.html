@@ -18,48 +18,20 @@
 </ng-template>
 <main id="mainContent">
     <div class="alert alert-info" role="alert">
-        <p>ButtonSwap3DS Builder is becoming 3DS Remap Builder! Because of the awesome work by Kartik on rehid,
+        <p>ButtonSwap3DS Builder is now 3DS Remap Builder! Because of the awesome work by Kartik on rehid,
         I am encouraging people to move over to using rehid instead of ButtonSwap3DS. His implementation is more
         full-featured than ButtonSwap3DS could ever be in its current state, and, to be honest, rehid is the direction
         that I would have had to go to get the features I wanted to implement.</p>
-        <p>As of this update of the builder (end of April 2021), the only reason I can recommend ButtonSwap3DS is that rehid does not
-        yet have a gyroscope driver (meaning it won't work in games that use it). Beyond that, rehid has the same remapping capabilities
-        as ButtonSwap3DS <em>and</em> supports remapping the controls handled by the IR module (C-Stick/nub and ZL/ZR).</p>
-        <p>For more information on rehid and getting it set up, you can see the <a href="https://github.com/hax0kartik/rehid">GitHub project</a>,
-        the <a href="https://gbatemp.net/threads/wip-rehid-hid-module-rewrite-for-easy-button-remapping-and-more.585387/">GBATemp thread</a>,
+        <p>To get set up with rehid, download Rehidhelper <a href="https://github.com/hax0kartik/rehid/releases/latest">from the latest GitHub release</a>. For more "expert" info, refer to
+        the <a href="https://gbatemp.net/threads/wip-rehid-hid-module-rewrite-for-easy-button-remapping-and-more.585387/">GBATemp thread</a>
         or <a href="https://www.reddit.com/r/3dshacks/comments/mihwk9/how_to_remap_controls_or_touch_screen/">u/MarioKartFan_123's excellent step-by-step guide.</a></p>
     </div>
     <div>
         <button class="btn btn-primary" (click)="buildCurrent()" [disabled]="building">Build this remap</button>
         <button class="btn btn-primary" (click)="openModal(qrCode)" *ngIf="rehidMode"><i class="bi bi-grid mr-2"></i>Show as QR code</button>
-        <div class="float-right btn-group btn-group-toggle" ngbRadioGroup name="mode" [(ngModel)]="rehidMode">
-            <label ngbButtonLabel class="btn btn-outline-secondary">
-                <input ngbButton type="radio" [value]='true'> rehid
-            </label>
-            <label ngbButtonLabel class="btn btn-outline-secondary">
-                <input ngbButton type="radio" [value]="false"> ButtonSwap3DS (Legacy)
-            </label>
-        </div>
     </div>
     <ngb-accordion activeIds="buttons">
         <ngb-panel [title]="'General Options'" id="main">
-            <ng-template ngbPanelContent *ngIf='!rehidMode'>
-                You can adjust some of the build settings here. Defaults are shown.
-                <div class="form-group">
-                    <label for="fileName">File name</label>
-                    <input type="text" class="form-control" id="fileName" placeholder="ButtonSwap3ds" [(ngModel)]="fileName">
-                    <small class="form-text text-muted">This only sets the name of the file you download</small>
-                </div>
-                <div class="form-group">
-                    <label for="productCode">Product Code</label>
-                    <input type="text" class="form-control" id="productCode" placeholder="CTR-HB-BTS3" [(ngModel)]="productCode">
-                </div>
-                <div class="form-group">
-                    <label for="uniqueId">Unique ID</label>
-                    <input type="text" class="form-control" id="uniqueId" placeholder="96E9E" [(ngModel)]="uniqueId">
-                    <small class="form-text text-muted">Make this unique if you want multiple swappers installed</small>
-                </div>
-            </ng-template>
             <ng-template ngbPanelContent *ngIf="rehidMode">
                 <div class="btn-group-toggle">
                     <b>C-Pad to D-Pad</b>
