@@ -14,7 +14,7 @@ export class Coordinates implements InputClass{
     }
 
     toRehid(): number[] {
-        return [(this.x - 240), this.y]
+        return [this.x, (240 - this.y)]
     }
 
     toTsData(): number {
