@@ -30,7 +30,7 @@
                         </div>
                         <div class="form-group">
                             <label for="cpadYManual">Y Position %</label>
-                            <input type="number" min="0" max="100" class="form-control" id="cpadYManual" [(ngModel)]="currentMappingY" (ngModelChange)="currentMapping.output.setYPercent($event / 100)">
+                            <input type="number" min="0" max="100" class="form-control" id="cpadYManual" [(ngModel)]="currentMappingY" (ngModelChange)="currentMapping.output.setYPercent((100 - $event)/ 100)">
                         </div>
                     </div>
                 </div>

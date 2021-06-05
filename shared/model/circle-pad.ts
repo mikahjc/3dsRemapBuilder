@@ -13,7 +13,7 @@ export class CirclePad implements InputClass {
     }
 
     toString(): string {
-        return `X: ${this.getXPercent()}%, Y: ${this.getYPercent()}%`;
+        return `X: ${this.getXPercent()}%, Y: ${Math.round(this.getYPercent())}%`;
     }
 
     getXPercent(): number {
