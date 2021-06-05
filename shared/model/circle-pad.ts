@@ -21,7 +21,7 @@ export class CirclePad implements InputClass {
     }
 
     getYPercent(): number {
-        return (this.y / this.diameter) * 100;
+        return ((this.diameter - this.y) / this.diameter) * 100;
     }
 
     setXPercent(percent: number): void {
@@ -33,39 +33,7 @@ export class CirclePad implements InputClass {
     }
 
     toRehid(): number[] {
-        
         return [this.bs3dsPercentToRehidCoord(this.getXPercent()), this.bs3dsPercentToRehidCoord(this.getYPercent())]
-        // const xpercent = ((this.getXPercent() - 50) * 2) / 100.0;
-        // const ypercent = ((this.getYPercent() - 50) * 2) / 100.0;
-        // let xCoordinate = Math.trunc(xpercent * 190)
-        // let yCoordinate = Math.trunc(ypercent * 190)
-        // if (xCoordinate < 0 && xCoordinate < -190) {
-        //     xCoordinate = -190
-        // } else if (xCoordinate > 0 && xCoordinate > 190) {
-        //     xCoordinate = 190
-        // }
-        // if (yCoordinate < 0 && yCoordinate < -190) {
-        //     yCoordinate = -190
-        // } else if (yCoordinate > 0 && yCoordinate > 190) {
-        //     yCoordinate = 190
-        // }
-        // return [xCoordinate, yCoordinate]
-
-        // if (Math.abs(xpercent) > Math.abs(ypercent)) {
-        //     // X is more "intense", select that axis
-        //     if (xpercent < 0) {
-        //         return "CLEFT"
-        //     } else {
-        //         return "CRIGHT"
-        //     }
-        // } else {
-        //     // Y is more "intense", select that axis
-        //     if (xpercent < 0) {
-        //         return "CDOWN"
-        //     } else {
-        //         return "CUP"
-        //     }
-        // }
     }
 
     private bs3dsPercentToRehidCoord(value: number) {
