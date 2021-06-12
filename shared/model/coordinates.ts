@@ -1,10 +1,8 @@
 import { InputClass } from "./input-class";
 
 export class Coordinates implements InputClass{
-    x: number;
-    y: number;
 
-    constructor(x: number = 0, y: number = 0) {
+    constructor(public x: number = 0, public y: number = 0) {
         this.x = x;
         this.y = y;
     }

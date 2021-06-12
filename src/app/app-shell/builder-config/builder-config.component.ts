@@ -18,6 +18,7 @@ export class BuilderConfigComponent implements OnInit {
   buttonMappings = new Array<Mapping<Buttons, Buttons>>();
   touchscreenMappings = new Array<Mapping<Buttons, Coordinates>>();
   cpadMappings = new Array<Mapping<Buttons, CirclePad>>();
+  touchToKeyMappings = new Array<Mapping<Coordinates, Buttons>>();
   building = false;
   rehidMode = true;
   dpadtocpad = false;

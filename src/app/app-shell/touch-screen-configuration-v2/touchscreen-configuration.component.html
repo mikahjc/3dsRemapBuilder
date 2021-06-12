@@ -1,0 +1,27 @@
+<div class="d-flex flex-wrap">
+        <div class="flex-fill third">
+            <button type="button" class="btn btn-primary" (click)="saveCurrent()" [disabled]="!currentMapping.input.isDefined()">Save this swap</button>
+            <ul class="list-group">
+                <li *ngIf="mappings.length === 0" class="list-group-item">No mappings defined</li>
+                <li *ngFor="let mapping of mappings" class="list-group-item">
+                    {{mapping.toString()}}<br>
+                    <button type="button" class="btn btn-secondary" (click)="loadMapping(mapping)">{{mapping === currentMapping ? 'Done' : 'Edit'}}</button>
+                    <button type="button" class="btn btn-danger" (click)="deleteMapping(mapping)">Delete</button>
+                </li>
+            </ul>
+        </div>
+        <div class="flex-fill third">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">When I touch...</h5>
+                    <canvas width="320" height="240" #tsViewport (mousedown)="tsMouseDown($event)" (mouseup)="tsMouseUp($event)" (mousemove)="tsMouseMove($event)" (mouseleave)="tsMouseLeave()"></canvas>
+                    <div style="display: inline;">
+                        <label for="screenshot" class="btn btn-primary">Select screenshot...</label>
+                        <input type="file" accept="image/*" (change)="onTouchscreenFileSelect($event)" id="screenshot" hidden>
+                        <button type="button" class="btn btn-secondary" (click)="reset()">Reset</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <app-button-selector class="flex-fill third" [(mask)]="currentMapping.output" [title]="'I want to press...'" [rehidMode]="rehidMode"></app-button-selector>
+</div>

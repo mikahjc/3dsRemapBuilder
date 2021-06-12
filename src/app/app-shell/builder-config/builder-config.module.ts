@@ -10,6 +10,7 @@ import { FormsModule } from '@angular/forms';
 import {TouchscreenConfigurationComponent} from '../touch-screen-configuration/touchscreen-configuration.component';
 import {CirclePadConfigurationComponent} from '../circle-pad-configuration/circle-pad-configuration.component';
 import { QRCodeModule } from 'angularx-qrcode'
+import { TouchscreenConfigurationComponentV2 } from '../touch-screen-configuration-v2/touchscreen-configuration.component';
 
 
 @NgModule({
@@ -18,6 +19,7 @@ import { QRCodeModule } from 'angularx-qrcode'
     ButtonSelectorComponent,
     ButtonMapConfigurationComponent,
     TouchscreenConfigurationComponent,
+    TouchscreenConfigurationComponentV2,
     CirclePadConfigurationComponent
   ],
   imports: [

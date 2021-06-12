@@ -68,5 +68,10 @@
                 <app-circle-pad-configuration style="width: 100%" [(mappings)]="cpadMappings" [rehidMode]="rehidMode"></app-circle-pad-configuration>
             </ng-template>
         </ngb-panel>
+        <ngb-panel [title]="'Touch to Key: ' + touchToKeyMappings.length + ' mappings'" id="touch2key">
+            <ng-template ngbPanelContent>
+                <app-touchscreen-configuration-v2 style="width: 100%" [(mappings)]="touchToKeyMappings" [rehidMode]="rehidMode"></app-touchscreen-configuration-v2>
+            </ng-template>
+        </ngb-panel>
     </ngb-accordion>
 </main>
