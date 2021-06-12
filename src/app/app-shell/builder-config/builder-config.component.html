@@ -47,10 +47,11 @@
                 </div>
                 <div class="btn-group-toggle">
                     <b>Override Circle Pad Pro</b>
-                    <label class="btn btn-outline-primary ml-2" ngbButtonLabel [ngbTooltip]="'Games will ' + (overridecpadpro ? 'not ' : '') + 'recognize the presence of the Circle Pad Pro'" placement="right">
+                    <label class="btn btn-outline-primary ml-2 mb-1" ngbButtonLabel [ngbTooltip]="'Games will ' + (overridecpadpro ? 'not ' : '') + 'recognize the presence of the Circle Pad Pro'" placement="right">
                         <input type="checkbox" ngbButton [(ngModel)]="overridecpadpro"> {{overridecpadpro ? "Enabled" : "Disabled"}}
                     </label>
                 </div>
+                <app-button-selector class="third" [(mask)]="homeButtonCombo" [title]="'Home Button Remap'" [rehidMode]="rehidMode"></app-button-selector>
             </ng-template>
         </ngb-panel>
         <ngb-panel [title]="'Buttons: ' + buttonMappings.length + ' mappings'" id="buttons">

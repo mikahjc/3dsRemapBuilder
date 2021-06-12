@@ -25,6 +25,7 @@ export class BuilderConfigComponent implements OnInit {
   dpadtocpad = false;
   cpadtodpad = false;
   overridecpadpro = false;
+  homeButtonCombo = new Buttons()
   constructor(private modalService: NgbModal) { }
 
   ngOnInit() {
@@ -68,11 +69,15 @@ export class BuilderConfigComponent implements OnInit {
     rehid.cpadtodpad = this.cpadtodpad;
     rehid.dpadtocpad = this.dpadtocpad;
     rehid.overridecpadpro = this.overridecpadpro;
+    if (this.homeButtonCombo.toRehid() !== '') {
+      rehid.homebutton = this.homeButtonCombo.toRehid()
+    }
     return rehid;
   }
 
   buildCurrent() {
     this.building = true;
+    console.log(this.homeButtonCombo.toRehid())
     if (this.rehidMode) { // Always true now
       const file = new Blob([this.rehidConfigAsString()], {type: "application/json;charset=utf-8"})
       saveAs(file, 'rehid.json')

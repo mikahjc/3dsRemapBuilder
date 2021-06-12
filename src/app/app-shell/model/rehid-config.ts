@@ -3,6 +3,7 @@ export class RehidConfig {
     touch: RehidMapping[] = []
     cpad: RehidMapping[] = []
     touchtokeys: RehidMapping[] = []
+    homebutton: string
     cpadtodpad: boolean
     dpadtocpad: boolean
     overridecpadpro: boolean
