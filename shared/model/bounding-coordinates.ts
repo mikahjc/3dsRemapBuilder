@@ -12,7 +12,7 @@ export class BoundingCoordinates extends Coordinates {
 
     toRehid(): number[] {
         this.abs()
-        return [this.x, this.y, this.w, this.h]
+        return [this.x, this.y, this.h, this.w]
     }
 
     isDefined(): boolean {
