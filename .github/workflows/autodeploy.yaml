@@ -21,4 +21,4 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           npm ci
-          npm run ng -- deploy --base-href=/3dsRemapBuilder/ --name="mikahjc" --email="mikah.chapman@gmail.com" --no-silent
+          npm run deploy
