@@ -36,7 +36,7 @@
               <div class="row">
                 <div class="col-11">&nbsp;</div>
               </div>
-              <div class="row" *ngIf="!isOutput && rehidMode">
+              <div class="row">
                   <div class="col-1 offset-1">
                       <div class="btn-group-toggle">
                           <label [class.btn-secondary]="buttons.cup" [class.btn-outline-secondary]="!buttons.cup" ngbButtonLabel>
@@ -48,17 +48,17 @@
                     <div class="pl-3">C-Pad</div>
                   </div>
                   <div class="col-3 offset-1 pr-1 text-right">
-                    C-Stick
+                    <span *ngIf="!isOutput">C-Stick</span>
                   </div>
                   <div class="col-2">
-                      <div class="btn-group-toggle">
+                      <div class="btn-group-toggle" *ngIf="!isOutput">
                           <label [class.btn-secondary]="buttons.csup" [class.btn-outline-secondary]="!buttons.csup" ngbButtonLabel>
                             <input type="checkbox" ngbButton [(ngModel)]="buttons.csup" (ngModelChange)="maskChange.emit(buttons)"><i class="bi bi-caret-up-fill"></i>
                           </label>
                       </div>
                   </div>
               </div>
-              <div class="row" *ngIf="!isOutput && rehidMode">
+              <div class="row">
                 <div class="col-2">
                     <div class="btn-group-toggle">
                         <label [class.btn-secondary]="buttons.cleft" [class.btn-outline-secondary]="!buttons.cleft" ngbButtonLabel>
@@ -74,21 +74,21 @@
                     </div>
                 </div>
                 <div class="col-2 offset-4">
-                    <div class="btn-group-toggle">
+                    <div class="btn-group-toggle" *ngIf="!isOutput">
                         <label [class.btn-secondary]="buttons.csleft" [class.btn-outline-secondary]="!buttons.csleft" ngbButtonLabel>
-                          <input type="checkbox" ngbButton [(ngModel)]="buttons.csleft" (ngModelChange)="maskChange.emit(buttons)"><i class="bi bi-caret-left-fill"></i>
+                          <input type="checkbox" ngbButton [(ngModel)]="buttons.csleft" (ngModelChange)="maskChange.emit(buttons)" [disabled]="isOutput"><i class="bi bi-caret-left-fill"></i>
                         </label>
                     </div>
                 </div>
                 <div class="col-2">
-                    <div class="btn-group-toggle">
+                    <div class="btn-group-toggle" *ngIf="!isOutput">
                         <label [class.btn-secondary]="buttons.csright" [class.btn-outline-secondary]="!buttons.csright" ngbButtonLabel>
-                          <input type="checkbox" ngbButton [(ngModel)]="buttons.csright" (ngModelChange)="maskChange.emit(buttons)"><i class="bi bi-caret-right-fill"></i>
+                          <input type="checkbox" ngbButton [(ngModel)]="buttons.csright" (ngModelChange)="maskChange.emit(buttons)" [disabled]="isOutput"><i class="bi bi-caret-right-fill"></i>
                         </label>
                     </div>
                 </div>
               </div>
-              <div class="row" *ngIf="!isOutput && rehidMode">
+              <div class="row">
                   <div class="col-2 offset-1">
                       <div class="btn-group-toggle">
                           <label [class.btn-secondary]="buttons.cdown" [class.btn-outline-secondary]="!buttons.cdown" ngbButtonLabel>
@@ -97,15 +97,15 @@
                       </div>
                   </div>
                   <div class="col-2 offset-6">
-                      <div class="btn-group-toggle">
+                      <div class="btn-group-toggle" *ngIf="!isOutput">
                           <label [class.btn-secondary]="buttons.csdown" [class.btn-outline-secondary]="!buttons.csdown" ngbButtonLabel>
-                            <input type="checkbox" ngbButton [(ngModel)]="buttons.csdown" (ngModelChange)="maskChange.emit(buttons)"><i class="bi bi-caret-down-fill"></i>
+                            <input type="checkbox" ngbButton [(ngModel)]="buttons.csdown" (ngModelChange)="maskChange.emit(buttons)" [disabled]="isOutput"><i class="bi bi-caret-down-fill"></i>
                           </label>
                       </div>
                   </div>
               </div>
               
-              <div class="row" *ngIf="!isOutput && rehidMode">
+              <div class="row">
                 <div class="col-11">&nbsp;</div>
             </div>
               <div class="row">
